@@ -1,25 +1,26 @@
 pipeline {
     agent any
     tools {
-        maven "MAVEN3"
-        jdk "OracleJDK8"
+         maven "MAVEN3"
+         jdk "OracleJDK8"
     }
+
     environment {
         SNAP_REPO = 'vprofile-snapshot'
-        NEXUS_URSER = 'admin'
-        NEXUS_PASS = 'admin123'
-        RELEASE_REPO = 'vprofile-release'
-        CENTRAL_REPO = 'vpro-maven-central'
-        NEXUS_IP = '172.31.92.17'
-        NEXUS_PROT = '8081'
-        NEXUS_GRP_REPO = 'vpro-maven-group'
+		NEXUS_USER = 'admin'
+		NEXUS_PASS = 'admin123'
+		RELEASE_REPO = 'vprofile-release'
+		CENTRAL_REPO = 'vpro-maven-central'
+		NEXUSIP = '172.31.90.38'
+		NEXUSPORT = '8081'
+		NEXUS_GRP_REPO = 'vpro-maven-group'
         NEXUS_LOGIN = 'nexuslogin'
     }
 
     stages {
-        stage('Build') {
+        stage ('Build') {
             steps {
-                sh 'mvn -s settings.xml -DskipTests install'
+                sh 'mvn -s settings.xml -DekipTests install'
             }
         }
     }
